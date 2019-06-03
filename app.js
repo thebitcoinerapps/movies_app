@@ -8,18 +8,23 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+let title = '';
 
 const API_KEY = '16d5e24f29c6edcbe4d2ac3fa4a26898';
 //https://image.tmdb.org/t/p/w500/
 
 
 app.get('/', (req, res)=>{
-    res.render('index');
+    res.render('index', {title: title});
 });
 
 
 app.post('/search', (req, res)=>{
-    console.log(req.body);
+   title = req.body.movie;
+
+    //ajax logic here
+
+   res.redirect('/');
 });
 
 
