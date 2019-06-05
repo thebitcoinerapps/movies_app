@@ -11,6 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let title = '';
+let description = '';
+
 
 const API_KEY = '16d5e24f29c6edcbe4d2ac3fa4a26898';
 //https://image.tmdb.org/t/p/w500/
@@ -22,9 +24,18 @@ app.get('/', (req, res)=>{
 
 
 app.post('/search', (req, res)=>{
-   title = req.body.movie;
+    title = req.body.movie;
 
     //ajax logic here
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${title}`;
+    
+    request({url: url}, (error, req, res)=>{
+        const rawData = JSON.parse(res);
+        const moviesArray = rawData.results;
+        console.log(moviesArray);
+        title = moviesArray[0].title;
+        console.log(title)
+    });
 
    res.redirect('/');
 });
