@@ -24,20 +24,19 @@ app.get('/', (req, res)=>{
 
 
 app.post('/search', (req, res)=>{
-    title = req.body.movie;
-
+    let query = req.body.movie;
     //ajax logic here
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${title}`;
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
     
-    request({url: url}, (error, req, res)=>{
-        const rawData = JSON.parse(res);
+    request({url: url}, (error, req, resp)=>{
+        const rawData = JSON.parse(resp);
         const moviesArray = rawData.results;
         console.log(moviesArray);
         title = moviesArray[0].title;
-        console.log(title)
+        res.redirect('/');
     });
 
-   res.redirect('/');
+   //res.redirect('/');
 });
 
 
