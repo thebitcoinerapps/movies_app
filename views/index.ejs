@@ -16,12 +16,10 @@
                 </form>
               </nav>
 
-              <div class="container">
-
-                    <% if (title) { %>
-                        <h2><%= title %></h2>
-                      <% } %>
-
+              <div class="container" style="margin-top: 10px;">
+                  <div class="row">
+                      <%- include('./moviesList', {title: title}); %>
+                  </div>
               </div>
     
 </body> 
