@@ -10,29 +10,37 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-let title = '';
-let description = '';
+let moviesData = [];
+
+let imgURL='';
 
 
 const API_KEY = '16d5e24f29c6edcbe4d2ac3fa4a26898';
-//https://image.tmdb.org/t/p/w500/
+//https://image.tmdb.org/t/p/w500/kBf3g9crrADGMc2AMAMlLBgSm2h.jpg
 
 
 app.get('/', (req, res)=>{
-    res.render('index', {title: title});
+    res.render('index', {moviesData: moviesData});
 });
 
 
 app.post('/search', (req, res)=>{
     let query = req.body.movie;
+    imgURL = 'https://ae01.alicdn.com/kf/HTB1NFr9cFGWBuNjy0Fbq6z4sXXaM/The-Dark-Knight-movie-poster-Batman-posters-kraft-paper-High-Quality-Printed-Painting-for-living-room.jpg_q50.jpg';
+
     //ajax logic here
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
     
     request({url: url}, (error, req, resp)=>{
         const rawData = JSON.parse(resp);
-        const moviesArray = rawData.results;
-        console.log(moviesArray);
-        title = moviesArray[0].title;
+        moviesData = rawData.results;
+
+        // title = moviesArray[0].title;
+        // description = moviesArray[0].overview;
+        //imgURL = moviesArray[0].poster_path;
+        
+        
+        
         res.redirect('/');
     });
 
