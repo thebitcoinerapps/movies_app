@@ -1,8 +1,9 @@
 .card{
-    height: 36rem;
+    
 }
 .card-text{
-    text-overflow:ellipsis;
-    white-space: nowrap;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }

@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 
 let moviesData = [];
 
-let imgURL='https://ae01.alicdn.com/kf/HTB1NFr9cFGWBuNjy0Fbq6z4sXXaM/The-Dark-Knight-movie-poster-Batman-posters-kraft-paper-High-Quality-Printed-Painting-for-living-room.jpg_q50.jpg'
+let imgURL='https://image.tmdb.org/t/p/w500';
 
 
 const API_KEY = '16d5e24f29c6edcbe4d2ac3fa4a26898';
