@@ -1,0 +1,8 @@
+.card{
+    height: 36rem;
+}
+.card-text{
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
