@@ -20,6 +20,14 @@
               <div class="container" style="margin-top: 10px;">
                   <div class="row">
 
+                      <% if(moviesData.length < 1){%>
+                        <div class="container">
+
+                          <h2>Weclome to Movie Browser</h2>
+                          <h3>Search for your favourite titles in just a snap</h3>
+                        </div>
+                      <%}%>
+
                       <%for(let i = 0; i < moviesData.length; i++){%>
                         <%- include('./moviesList', {moviesData: moviesData[i], imgURL:imgURL}) %>
                       <%}%>
